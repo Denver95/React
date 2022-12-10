@@ -10,10 +10,11 @@ import { ListName } from './components/function/ListName'
 export function App() {
 
 	const [toggle, setToggle] = useState(true)
-	const [arr] = useState([{ name: 'Biba' }, { name: 'Boba' }, { name: 'Git' }, { name: 'Good' }])
+	const [arr] = useState([{ name: 'Biba', id: 23 }, { name: 'Boba', id: 31 }, { name: 'Git', id: 332 }, { name: 'Good', id: 343 }])
 	// const ShowHide = () => {
 	// 	setToggle(!toggle)
 	// }
+
 
 	return (
 		//Если больше одного тега то надо все ОБЕРНУТЬ в один общий тег
