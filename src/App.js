@@ -1,40 +1,25 @@
-
 import { useState } from 'react'
-import { Form } from './components/classes/Form'
-import { Form as FormFunc } from './components/function/Form'
-import { ListName } from './components/function/ListName'
+import { Message } from './components/Message/Message'
+import style_App from './styleApp.module.css'
 
-
-
-//Можно и так но если мы поменяем имя в index.js то можем не найти наш файл. Главное правильно указать имя/  и ставим усы { }
 export function App() {
+  const h3 = 'Open Message Component'
+  const [toggle, setToggle] = useState(false)
 
-	const [toggle, setToggle] = useState(true)
-	const [arr] = useState([{ name: 'Biba', id: 23 }, { name: 'Boba', id: 31 }, { name: 'Git', id: 332 }, { name: 'Good', id: 343 }])
-	// const ShowHide = () => {
-	// 	setToggle(!toggle)
-	// }
+  return (
+    <div className={style_App.App}>
+      <div className={style_App.container}>
+        <div className={style_App.Message}>
+          <h3 className={style_App.App_title}>Message component </h3>
+          <button className={style_App.App_btn} onClick={() => setToggle(!toggle)}>{toggle ? 'Hide' : 'Show'} </button>
+          {toggle && <Message text_h3={h3} />}
+        </div>
 
 
-	return (
-		//Если больше одного тега то надо все ОБЕРНУТЬ в один общий тег
-		<div >
-			<Form />
-			<hr />
-			<button onClick={() => setToggle(!toggle)}>{toggle ? 'hide' : 'show'}</button>
-			{/* <button onClick={ShowHide}>{toggle ? 'hide' : 'show'}</button> */}
-			{toggle && <FormFunc />}
-			<hr />
-			<ListName dataArr={arr} />
 
-		</div>
-	)
+
+      </div>
+
+    </div>
+  )
 }
-
-
-
-
-
-
-// // можно так отправить файл.
-// export default App; 
