@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Form } from './components/Form/Form'
 import { Message } from './components/Message/Message'
 import style_App from './styleApp.module.css'
+import { Button } from './components/btn/Button'
 
 export function App() {
   const h3 = 'Open Message Component'
@@ -31,7 +32,13 @@ export function App() {
       <div className={style_App.container}>
         <div className={style_App.Message}>
           <h3 className={style_App.App_title}>Message component </h3>
-          <button className={style_App.App_btn} onClick={() => setToggle(!toggle)}>{toggle ? 'Hide' : 'Show'} </button>
+          <Button
+            className={style_App.App_btn}
+            onClick={() => setToggle(!toggle)}
+          >
+            {toggle ? 'Hide' : 'Show'}
+          </Button>
+          {/* <button className={style_App.App_btn} onClick={() => setToggle(!toggle)}>{toggle ? 'Hide' : 'Show'} </button> */}
           {toggle && <Form addMessage={addMessage} />}
           {toggle && <Message h3={h3} messageList={messageList} />}
         </div>

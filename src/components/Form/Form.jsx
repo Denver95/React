@@ -2,13 +2,13 @@ import { Button } from "../btn/Button";
 import { useState } from "react"
 import form_style from './Form.module.css'
 
-export function Form(props) {
+export function Form({ addMessage }) {
 
 
 	const [text, setText] = useState('');
 	const handleSubmit = (event) => {
 		event.preventDefault()
-		props.addMessage({
+		addMessage({
 			author: 'user',
 			text: text
 		})
