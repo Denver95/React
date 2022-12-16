@@ -1,5 +1,12 @@
+.FormBlock {
+	display: flex;
+}
+
 .input {
-	padding: 5px 10px;
-	font-size: 18px;
-	border-radius: 10px;
+	width: 100%;
+}
+
+.button {
+	width: 140px;
+	height: 55px;
 }

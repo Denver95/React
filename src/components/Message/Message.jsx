@@ -6,7 +6,7 @@ export function Message({ h3, messageList }) {
 	return (
 
 		<div className={mes_style.messageList} >
-			<h1>{h3}</h1>
+			<h1 className={mes_style.h1}>{h3}</h1>
 			<div className={mes_style.messageBlock}>
 				{messageList.map((message, indx) => (
 					<section className={mes_style.messageSection} key={indx}>
