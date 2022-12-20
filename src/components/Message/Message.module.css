@@ -44,3 +44,7 @@
 	line-height: 32px;
 	box-sizing: border-box;
 }
+
+.messageAddClass {
+	color: black;
+}

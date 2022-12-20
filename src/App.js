@@ -16,12 +16,13 @@ export function App() {
     setMessageList([...messageList, newMessage])
   }
 
+
   useEffect(() => {
     if (messageList.length > 0 && messageList[messageList.length - 1].author === 'user') {
       const timeout = setTimeout(() => {
         addMessage({
           author: 'Bot',
-          text: 'Im Bot'
+          text: 'Im Bot',
         })
       }, 1500)
       return () => {
@@ -29,6 +30,8 @@ export function App() {
       }
     }
   }, [messageList])
+
+
 
   return (
     <div className={style_App.App}>
@@ -44,8 +47,10 @@ export function App() {
         >
           {toggle ? 'Hide' : 'Show'}
         </IButton>
-        {/* <button className={style_App.App_btn} onClick={() => setToggle(!toggle)}>{toggle ? 'Hide' : 'Show'} </button> */}
-        {toggle && <Message h3={h3} messageList={messageList} />}
+        <div className={style_App.flex_box_chat}>
+
+          {toggle && <Message h3={h3} messageList={messageList} />}
+        </div>
         {toggle && <Form addMessage={addMessage} />}
       </div>
     </div>

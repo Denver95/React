@@ -9,7 +9,7 @@ export function Message({ h3, messageList }) {
 			<h1 className={mes_style.h1}>{h3}</h1>
 			<div className={mes_style.messageBlock}>
 				{messageList.map((message, indx) => (
-					<section className={mes_style.messageSection} key={indx}>
+					<section className={mes_style.messageSection} key={indx + 100}>
 						<h3 className={mes_style.messageSection_h3}>{message.author}</h3>
 						<p className={mes_style.messageSection_p}>{message.text} </p>
 					</section>
