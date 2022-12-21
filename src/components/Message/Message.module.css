@@ -25,6 +25,10 @@
 	background-color: rgb(195 4 255 / 19%);
 }
 
+.messageSection:first-child {
+	display: none;
+}
+
 .messageSection_h3 {
 	width: 150px;
 	text-align: center;
