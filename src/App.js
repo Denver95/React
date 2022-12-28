@@ -6,13 +6,20 @@ import { ProfilePage } from './Page/Profile/ProfilePage'
 import { Route, Routes } from 'react-router-dom'
 import { ListChat } from './components/ListChat/ListChat'
 
+// 3. Подключаем наш стор и провайдер
+import { Provider } from 'react-redux'
+import { store } from './Store/index'
+
+
+
+
 export function App() {
 
 
 
   return (
-    <div >
-
+    //4. Оборачиваем наше приложение (можно отдельный компонент) в провайдер и пропсами прокидываем наш стор(хранилище)
+    <Provider store={store}>
       <Routes>
         <Route path='/' element={<Navigation />}>
           <Route index element={<MainPage />} />
@@ -26,9 +33,6 @@ export function App() {
         {/* Защита от Дурака */}
         <Route path='*' element={(<h1 >404 Error</h1>)}></Route>
       </Routes >
-
-
-    </div >
-
+    </Provider>
   )
 }
