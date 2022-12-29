@@ -5,16 +5,28 @@ import { ChatsPage } from './Page/Chats/ChatsPage'
 import { ProfilePage } from './Page/Profile/ProfilePage'
 import { Route, Routes } from 'react-router-dom'
 import { ListChat } from './components/ListChat/ListChat'
-
+// import { useState } from 'react'
 // 3. Подключаем наш стор и провайдер
 import { Provider } from 'react-redux'
 import { store } from './Store/index'
 
-
+// const defaultMessges = {
+//   BOT: [
+//     {
+//       author: 'user',
+//       text: 'one text'
+//     },
+//     {
+//       author: 'user',
+//       text: 'two text'
+//     },
+//   ]
+// }
 
 
 export function App() {
 
+  // const [messages, setMessages] = useState(defaultMessges)
 
 
   return (

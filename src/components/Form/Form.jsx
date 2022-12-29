@@ -3,17 +3,21 @@ import form_style from './Form.module.css'
 import React from 'react';
 import IButton from '@material-ui/core/Button';
 import ITextField from '@material-ui/core/TextField';
+import { useDispatch } from "react-redux";
+import { addMessage } from '../../Store/Messages/action'
+import { useParams } from "react-router-dom";
 
-export function Form({ addMessage }) {
 
+
+export function Form() {
 
 	const [text, setText] = useState('');
+	const dispatch = useDispatch()
+	const { chatId } = useParams()
 	const handleSubmit = (event) => {
 		event.preventDefault()
-		addMessage({
-			author: 'user',
-			text: text
-		})
+		// Вызываем диспатч и в экшен передаем 
+		dispatch(addMessage(chatId, text))
 		setText('')
 	}
 

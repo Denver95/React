@@ -24,8 +24,12 @@
 	margin-left: 40px;
 }
 
-.name_p {
+.button_checkbox {
+	cursor: pointer;
 	background-color: chartreuse;
 	padding: 10px;
 	margin-left: 30px;
 }
+
+
+.name_p {}
