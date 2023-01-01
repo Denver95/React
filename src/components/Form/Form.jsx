@@ -4,7 +4,11 @@ import React from 'react';
 import IButton from '@material-ui/core/Button';
 import ITextField from '@material-ui/core/TextField';
 import { useDispatch } from "react-redux";
+<<<<<<< HEAD
 import { addMessageReply } from '../../Store/Messages/action'
+=======
+import { addMessage } from '../../Store/Messages/action'
+>>>>>>> main
 import { useParams } from "react-router-dom";
 
 
@@ -17,6 +21,7 @@ export function Form() {
 	const handleSubmit = (event) => {
 		event.preventDefault()
 		// Вызываем диспатч и в экшен передаем 
+<<<<<<< HEAD
 		// #3. Изменяем dispatch
 		// dispatch(addMessage(chatId, text))
 		// setText('')
@@ -25,6 +30,9 @@ export function Form() {
 			author: 'user',
 			text
 		}))
+=======
+		dispatch(addMessage(chatId, text))
+>>>>>>> main
 		setText('')
 	}
 

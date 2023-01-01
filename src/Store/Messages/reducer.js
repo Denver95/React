@@ -45,10 +45,15 @@ export const messages_Reducer = (state = initState, action) => {
 					...state[payload.chatName],
 					// Добавить ко всем существующим сообщения новое сообщение
 					{
+<<<<<<< HEAD
 						// #3.2 изменим путь был user стало   payload.text.authort
 						author: payload.text.author,
 						// #3.2 изменим путь добавив text
 						text: payload.text.text
+=======
+						author: 'User',
+						text: payload.text
+>>>>>>> main
 					}
 				]
 			}

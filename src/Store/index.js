@@ -1,5 +1,6 @@
 
 // 1. Импортруем createStore, compose    и наш profile_reducer
+<<<<<<< HEAD
 import { createStore, compose, combineReducers, applyMiddleware } from "redux";
 import { profile_reducer } from './Profile/profile_reducer';
 // @4. Добавили наш Messages
@@ -16,6 +17,12 @@ const persistConfig = {
 	storage,
 }
 
+=======
+import { createStore, compose, combineReducers } from "redux";
+import { profile_reducer } from './Profile/profile_reducer';
+// @4. Добавили наш Messages
+import { messages_Reducer } from './Messages/reducer'
+>>>>>>> main
 
 
 //  Чтоб в redux devtools можно было работать со стором, акшион 
@@ -27,6 +34,7 @@ const rootReducer = combineReducers({
 	messages: messages_Reducer
 })
 
+<<<<<<< HEAD
 // P3. Создаем персистРедюсер. Сюда передаем Переменную выще(Которая собираемт все наши редюсеры в одно)
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
@@ -38,3 +46,8 @@ export const store = createStore(persistedReducer, composeEnhancers(applyMiddlew
 
 // P5. Импортируем перстистор. Переходим в APP  и оборачиваем все 
 export const persistor = persistStore(store)
+=======
+// 2. Создаем Стор
+
+export const store = createStore(rootReducer, composeEnhancers())
+>>>>>>> main
