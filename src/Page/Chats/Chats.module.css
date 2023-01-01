@@ -6,19 +6,15 @@
 .container {
 	width: 1140px;
 	height: 100%;
-	box-sizing: border-box;
 	margin: 0 auto;
-}
-
-.Message {
-	width: 100%;
 	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	margin: 40px;
 }
 
-.App_title {
-	text-transform: uppercase;
-	margin: 0px;
+.right_block_chat {
+	width: 70%;
+}
+
+.left_block_chat {
+	width: 30%;
+	margin-right: 20px;
 }
