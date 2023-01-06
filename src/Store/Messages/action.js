@@ -2,8 +2,16 @@
 export const Add_Chat = 'Add_Chat';
 export const Delete_Chat = 'Delete_Chat'
 export const Add_Message = 'Add_Message'
+<<<<<<< HEAD
 
 
+=======
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> main
+>>>>>>> main
 //@5. Принимаем новый чат(newChat) 
 export const addChat = (newChat) => ({
 	type: Add_Chat,
@@ -20,6 +28,10 @@ export const deleteChat = (chatName) => ({
 
 export const addMessage = (chatName, text) => ({
 	type: Add_Message,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> main
 	payload: { chatName, text },
 })
 
@@ -42,3 +54,10 @@ export const addMessageReply = (chatName, message) => (dispatch) => {
 		}, 1000)
 	}
 }
+<<<<<<< HEAD
+=======
+=======
+	payload: { chatName, text }
+})
+>>>>>>> main
+>>>>>>> main
