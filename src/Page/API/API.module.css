@@ -1,0 +1,41 @@
+.Api {
+	background-color: chocolate;
+	max-width: 1140px;
+	margin: 0 auto;
+	height: 100%;
+	text-align: center;
+	align-items: center;
+}
+
+.h1_Blogs {
+	margin: 20px 0;
+}
+
+.card_blog {
+	margin: 30px 0;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+
+}
+
+.card {
+	margin: 20px 0;
+}
+
+.block_Error {
+	width: 300px;
+	height: 100%s;
+	background-color: rgb(42, 235, 161);
+	margin: 0 auto;
+
+}
+
+.btn_error {
+	margin: 20px 0;
+}
+
+.Error {
+	color: red;
+	font-size: 30px;
+}

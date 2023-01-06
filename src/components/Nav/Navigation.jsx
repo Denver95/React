@@ -9,7 +9,7 @@ export const navigateList = [
 		to: '/'
 	},
 	{
-		id: 33,
+		id: 2,
 		name: 'Chats',
 		to: '/chats'
 	},
@@ -17,12 +17,27 @@ export const navigateList = [
 		id: 3,
 		name: 'Profile',
 		to: '/profile'
+	},
+	// Подключаем наши Статьи
+	{
+		id: 4,
+		name: 'Articles',
+		to: '/articles'
+	},
+	// 
+	{
+		id: 5,
+		name: 'Blogs',
+		to: '/blogs'
 	}
 ]
 
 export function Navigation() {
 
+	const title = () => {
+		console.log()
 
+	}
 
 	return (
 		<>
@@ -36,6 +51,7 @@ export function Navigation() {
 									style={({ isActive }) => ({
 										color: isActive ? 'yellow' : 'black'
 									})}
+									onClick={title}
 								>
 									{link.name}
 								</NavLink>
