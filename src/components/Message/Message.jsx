@@ -1,8 +1,7 @@
-// import { useState } from "react";
 import mes_style from './Message.module.css'
+import PropTypes from 'prop-types'
 
 export function Message({ messages }) {
-
 	return (
 
 		<div className={mes_style.messageList} >
@@ -21,3 +20,6 @@ export function Message({ messages }) {
 	)
 }
 
+Message.propTypes = {
+	messages: PropTypes.array
+}

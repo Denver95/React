@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Button render component  1`] = `
+<DocumentFragment>
+  <button
+    class="btn"
+  >
+     Change name 
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Test Button render with snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="btn"
+  >
+    Change name 
+  </button>
+</DocumentFragment>
+`;

@@ -1,0 +1,23 @@
+.MainPage {
+	max-width: 1140px;
+	height: 500px;
+	margin: 0 auto;
+	background-color: bisque;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+
+
+.Link {
+	display: inline-block;
+	background-color: cadetblue;
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.Link:hover {
+	background-color: rgba(95, 158, 160, 0.515);
+	color: rgb(0, 26, 255);
+}

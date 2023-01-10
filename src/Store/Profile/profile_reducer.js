@@ -2,19 +2,27 @@
 import * as types from './profile_type'
 
 
-// начальное состояние checkBox
-let checkBox = {
-	check: false
+
+let initialState = {
+	check: false,
+	isAuth: false,
 }
 
-export const profile_reducer = (state = checkBox, action) => {
-	let { type } = action
+export const profile_reducer = (state = initialState, action) => {
+	let { type, payload } = action
 
 	switch (type) {
 		case types.Status_CheckBox:
 			return {
 				...state,
 				check: !state.check,
+			}
+
+
+		case types.IS_AUTH:
+			return {
+				...state,
+				isAuth: payload
 			}
 		default:
 			return state

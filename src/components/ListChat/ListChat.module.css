@@ -1,13 +1,13 @@
 .Form {
 	display: flex;
 	flex-direction: column;
-	width: 330px;
+	max-width: 330px;
 }
 
 .chat_ul {
 	margin-top: 50px;
 	background-color: rgb(62 138 239 / 21%);
-	width: 330px;
+	max-width: 330px;
 }
 
 .chat_li {

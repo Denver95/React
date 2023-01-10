@@ -1,5 +1,9 @@
 import style_Nav from './Navigation.module.css'
-import { Outlet, NavLink } from 'react-router-dom'
+import { Outlet, NavLink, useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+
+
+import { logOut } from '../../services/firebase';
 
 
 export const navigateList = [
@@ -18,25 +22,33 @@ export const navigateList = [
 		name: 'Profile',
 		to: '/profile'
 	},
-	// Подключаем наши Статьи
 	{
 		id: 4,
 		name: 'Articles',
 		to: '/articles'
 	},
-	// 
 	{
 		id: 5,
 		name: 'Blogs',
 		to: '/blogs'
-	}
+	},
+
 ]
 
 export function Navigation() {
 
-	const title = () => {
-		console.log()
+	const navigate = useNavigate();
+	const name = useSelector((store) => store.profile.name)
+	const isAuth = useSelector((store) => store.profile.isAuth)
 
+	const handleLogin = () => {
+		navigate('/login')
+	}
+	const handleSignUp = () => {
+		navigate('/registration')
+	}
+	const handleLogout = async () => {
+		await logOut()
 	}
 
 	return (
@@ -51,7 +63,7 @@ export function Navigation() {
 									style={({ isActive }) => ({
 										color: isActive ? 'yellow' : 'black'
 									})}
-									onClick={title}
+
 								>
 									{link.name}
 								</NavLink>
@@ -60,6 +72,36 @@ export function Navigation() {
 					}
 
 				</ul>
+
+				<div className={style_Nav.block_regist_login}>
+					{!isAuth && (
+						<>
+							<button
+								className={style_Nav.btn}
+								onClick={handleLogin}
+							>
+								Вход
+							</button>
+							<button
+								className={style_Nav.btn}
+								onClick={handleSignUp}
+							>
+								Регистрация
+							</button>
+						</>
+					)}
+					{isAuth && (
+						<>
+							<button
+								className={style_Nav.btn}
+								onClick={handleLogout}
+							>
+								Выйти
+							</button>
+						</>
+					)}
+					<p>{name}</p>
+				</div>
 
 			</header>
 			<main>

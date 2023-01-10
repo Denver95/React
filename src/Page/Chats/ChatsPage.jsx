@@ -1,52 +1,39 @@
 import style_chats from './Chats.module.css'
-// import { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import { Form } from '../../components/Form/Form'
 import { Message } from '../../components/Message/Message'
 import { ListChat } from '../../components/ListChat/ListChat'
-import { useParams, Navigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { selectMessage } from '../../Store/Messages/selector'
+
+import { WithClasses } from '../../hocs/WithClasses'
 
 
-export function ChatsPage() {
+export function ChatsPage({ messagesDB, chats }) {
 
-	const messages = useSelector(selectMessage)
 	const { chatId } = useParams()
 
-	// useEffect(() => {
-	// 	if (chatId &&
-	// 		messages[chatId]?.length > 0 &&
-	// 		messages[chatId][messages[chatId].length - 1].author === 'user') {
-	// 		const timeout = setTimeout(() => {
-	// 			onAddMessage(chatId, {
-	// 				author: 'Bot',
-	// 				text: 'Im Bot',
-	// 			})
-	// 		}, 1500)
-
-	// 		return () => {
-	// 			clearTimeout(timeout)
-	// 		}
-	// 	}
-	// }, [messages, chatId])
+	const MessageListWithClass = WithClasses(Message)
 
 
-	//проверка. Если чата не существуею или указали неверный, то нас перенаправит в начальный чат. 
-	//Navigate  из библиотеке react-doom.
-	if (chatId && !messages[chatId]) {
-		return <Navigate to="/chats" />
-	}
+	const messagesChat = chats.find((chat) => chat?.name === chatId)
+	const messages = Object.entries(messagesChat.messages)
+		.map((mes) => ({
+			id: mes[0],
+			text: mes[1].text,
+			author: mes[1].author,
+
+		}))
+
 
 
 	return (
 		<div className={style_chats.MainPage}>
 			<div className={style_chats.container}>
 				<div className={style_chats.left_block_chat}>
-					<ListChat />
+					<ListChat chats={chats} />
 				</div>
 				<div className={style_chats.right_block_chat}>
-					<Message
-						messages={chatId ? messages[chatId] : []} />
+					<MessageListWithClass
+						messages={chatId ? messages : []} />
 					<Form />
 				</div>
 			</div>

@@ -1,38 +1,47 @@
 import { useState } from "react"
-import style_listChat from './ListChat.module.css'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch } from "react-redux";
+import { addChat } from "../../Store/Messages/action";
+import style_listChat from './ListChat.module.css';
+
+
+
+import { push, set, remove } from "firebase/database";
+import { messagesRef, getChatById, getMessageListById } from '../../services/firebase';
+
 import IButton from '@material-ui/core/Button';
 import ITextField from '@material-ui/core/TextField';
-import { Link } from 'react-router-dom'
-import { useDispatch, useSelector } from "react-redux";
-import { addChat, deleteChat } from "../../Store/Messages/action";
-import { selectChat } from '../../Store/Messages/selector'
 
 
-export function ListChat() {
+export function ListChat({ messagesDB, chats }) {
 
-	//Массив с данными
 	const [value, setValue] = useState('')
 	const dispatch = useDispatch();
-	//Создаем константу для того чтоб в наш стор мы могли записать добавленный чат и отобразить его. Добовляем селектор
-	const chats = useSelector(selectChat)
-	// ==================================================
-	// Удаляем функцию. В инпуте мы ей прописали
-	//  Функция которая будет принимать значение из инпута и записывать в UseState 
-	// const handleChange = (e) => {
-	// 	setValue(e.target.value)
-	// }
-	// ================================================
-
-
-	//Функция Принимает пропрсы из ChatPage
+	const navigate = useNavigate();
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		// Дает возможность изменить наш сторе
 		dispatch(addChat(value));
+
+		set(messagesRef, {
+			...messagesDB,
+			[value]: {
+				name: value
+			}
+		})
+
+		push(getMessageListById(value), {
+			text: 'Чат был создан',
+			author: 'Admin',
+		});
+
 		setValue('');
 	}
 
 
+	const handleDeleteChat = (chatId) => {
+		remove(getChatById(chatId));
+		navigate('/chats');
+	};
 
 	return (
 		<div className={style_listChat.ListChat}>
@@ -53,18 +62,17 @@ export function ListChat() {
 						variant="contained"
 						color="secondary"
 						className={style_listChat.Form_button}
-					> Create chat
+					> Создать Чат
 					</IButton>
 				</form>
 				<ul className={style_listChat.chat_ul}>
 					{chats.map((chat) => (
-						<li key={chat.id} className={style_listChat.chat_li} >
-							{/* Передаем куда идти  */}
+						<li key={chat.name} className={style_listChat.chat_li} >
 							<Link to={`/chats/${chat.name}`} className={style_listChat.ul_link}>
 								{chat.name}
 							</Link>
 							<button
-								onClick={() => dispatch(deleteChat(chat.name))}
+								onClick={() => dispatch(handleDeleteChat(chat.name))}
 								className={style_listChat.close}
 							>x</button>
 						</li>

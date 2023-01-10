@@ -1,6 +1,5 @@
 import { Add_Chat, Delete_Chat, Add_Message } from "./action"
 
-//@1.Создаем переменную  содержащая чат
 const initState = {
 	BOT: [
 		{
@@ -15,15 +14,11 @@ const initState = {
 }
 
 
-//@2. 
-
 export const messages_Reducer = (state = initState, action) => {
 	const { type, payload } = action
 
 	switch (type) {
-		//@3. Первый кейс будет на создание чата
 		case Add_Chat:
-			//возвращаем обьект с чатами и в нагрузку будет приходить новый чат
 			return {
 				...state,
 				[payload]: []
@@ -37,29 +32,12 @@ export const messages_Reducer = (state = initState, action) => {
 
 		case Add_Message:
 			return {
-				//Возвращаем все чаты
 				...state,
-				// Обращаемся к определенному чату, по Имени 
 				[payload.chatName]: [
-					// Вернем все сообщения 
 					...state[payload.chatName],
-					// Добавить ко всем существующим сообщения новое сообщение
 					{
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> main
-						// #3.2 изменим путь был user стало   payload.text.authort
 						author: payload.text.author,
-						// #3.2 изменим путь добавив text
 						text: payload.text.text
-<<<<<<< HEAD
-=======
-=======
-						author: 'User',
-						text: payload.text
->>>>>>> main
->>>>>>> main
 					}
 				]
 			}

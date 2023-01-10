@@ -1,0 +1,51 @@
+.Login {
+	max-width: 1140px;
+	height: 500px;
+	background-color: rgb(134, 83, 196);
+	margin: 0 auto;
+}
+
+.h1_Login {
+	margin: 30px 0;
+	font-size: 30px;
+	text-align: center;
+}
+
+.Form {
+	display: block;
+	margin: 20px;
+}
+
+.Form_email {
+	margin-bottom: 10px;
+}
+
+.Form_password {}
+
+.Input {
+	padding: 5px;
+	border-radius: 5px;
+	border: none;
+}
+
+.Input:focus {
+	background-color: rgba(210, 210, 236, 0.99);
+}
+
+.Form_error {}
+
+.p_error {
+	color: rgb(131, 17, 17);
+	margin: 0 10px;
+
+}
+
+.Button {
+	margin: 10px 0;
+	padding: 5px;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+}
+
+.Form_Ready {}

@@ -1,4 +1,5 @@
 
 
-//чтобы не ошибится мы выносим строку Status_CheckBox ы отдельный файл (ТИПЫ) в котором мы эту строку положим в переменную и будем вызвать где нам нужно.
 export let Status_CheckBox = 'Status_CheckBox';
+
+export const IS_AUTH = 'IS_AUTH'

@@ -1,10 +1,8 @@
 import btn_style from './Button.module.css'
-
+import PropTypes from 'prop-types'
 
 export function Button(props) {
-	console.log(props)
 
-	console.log(props.children)
 	return (
 		<>
 			<button {...props} className={btn_style.btn}>{props.children} </button>
@@ -12,4 +10,9 @@ export function Button(props) {
 	)
 
 
+}
+
+
+Button.prototype = {
+	type: PropTypes.string
 }

@@ -5,100 +5,95 @@ import { ChatsPage } from './Page/Chats/ChatsPage'
 import { ProfilePage } from './Page/Profile/ProfilePage'
 import { Articles } from './Page/Article/Article'
 import { ApiBlogs } from './Page/API/Api_Blogs'
-import { Route, Routes } from 'react-router-dom'
 import { ListChat } from './components/ListChat/ListChat'
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> main
-// 3. Подключаем наш стор и провайдер
-import { Provider } from 'react-redux'
-import { store, persistor } from './Store/index'
-// P.6 Обернули все Redux/ Нужно импортитровать persistor
+import { Registration } from './Page/Registration/Registration'
+import { Login } from './Page/Login/Login'
+import { PrivateRoute } from './hocs/PrivateRoute'
+import { PublicRoute } from './hocs/PublicRoute'
+
+import { onValue } from "firebase/database";
+
+import { useDispatch } from 'react-redux'
+import { persistor } from './Store/index'
 import { PersistGate } from 'redux-persist/integration/react'
-<<<<<<< HEAD
-
-=======
-=======
-// import { useState } from 'react'
-// 3. Подключаем наш стор и провайдер
-import { Provider } from 'react-redux'
-import { store } from './Store/index'
-
-// const defaultMessges = {
-//   BOT: [
-//     {
-//       author: 'user',
-//       text: 'one text'
-//     },
-//     {
-//       author: 'user',
-//       text: 'two text'
-//     },
-//   ]
-// }
-
->>>>>>> main
->>>>>>> main
+import { Route, Routes } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { firebaseAuth, messagesRef } from './services/firebase'
+import { auth } from './Store/Profile/profile_action'
 
 
-  // const [messages, setMessages] = useState(defaultMessges)
+
 
 export function App() {
+  const dispatch = useDispatch();
+  const [messagesDB, setMessagesDB] = useState({})
+  const [chats, setChats] = useState([])
 
-<<<<<<< HEAD
-export function App() {
+
+  useEffect(() => {
+    const unsubscribe = firebaseAuth.onAuthStateChanged((user) => {
+      if (user) {
+        dispatch(auth(true));
+      } else {
+        dispatch(auth(false));
+      }
+    })
+
+    return unsubscribe
+  }, [])
+
+
+  useEffect(() => {
+    onValue(messagesRef, (snapshot) => {
+      const data = snapshot.val()
+
+      const newChats = Object.entries(data).map((item) => ({
+        name: item[0],
+        messages: item[1].messageList
+      }))
+
+      setMessagesDB(data)
+      setChats(newChats)
+    })
+  }, [])
 
   return (
-    //4. Оборачиваем наше приложение (можно отдельный компонент) в провайдер и пропсами прокидываем наш стор(хранилище)
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <Routes>
-          <Route path='/' element={<Navigation />}>
-            <Route index element={<MainPage />} />
-            <Route path='chats'>
-              <Route index element={<ListChat />} ></Route>
-              <Route path=':chatId' element={<ChatsPage />}></Route>
-            </Route>
-            <Route path='profile' element={<ProfilePage />} />
-<<<<<<< HEAD
-            {/* Подключили к роут наш статьи */}
-            <Route path='articles' element={<Articles />} />
 
-            {/* Подключим API */}
-            <Route path='blogs' element={<ApiBlogs />} />
-          </Route>
 
-          {/* Защита от Дурака */}
-          <Route path='*' element={(<h1 >404 Error</h1>)}></Route>
-        </Routes >
-      </PersistGate>
-=======
-          </Route>
-
-          {/* Защита от Дурака */}
-          <Route path='*' element={(<h1 >404 Error</h1>)}></Route>
-        </Routes >
-      </PersistGate>
-=======
-  return (
-    //4. Оборачиваем наше приложение (можно отдельный компонент) в провайдер и пропсами прокидываем наш стор(хранилище)
-    <Provider store={store}>
+    <PersistGate persistor={persistor}>
       <Routes>
         <Route path='/' element={<Navigation />}>
           <Route index element={<MainPage />} />
-          <Route path='chats'>
-            <Route index element={<ListChat />} ></Route>
-            <Route path=':chatId' element={<ChatsPage />}></Route>
+
+          <Route path="chats" element={<PrivateRoute />}>
+            <Route
+              index
+              element={<ListChat chats={chats} messagesDB={messagesDB} />}
+            />
+            <Route
+              path=":chatId"
+              element={<ChatsPage chats={chats} messagesDB={messagesDB} />}
+            />
           </Route>
+
           <Route path='profile' element={<ProfilePage />} />
+
+
+          <Route path='articles' element={<Articles />} />
+
+          <Route path='blogs' element={<ApiBlogs />} />
+
+          <Route path='registration' element={<Registration />} />
+
+          <Route path='login' element={<PublicRoute component={<Login />} />} />
+
         </Route>
+
+
 
         {/* Защита от Дурака */}
         <Route path='*' element={(<h1 >404 Error</h1>)}></Route>
       </Routes >
->>>>>>> main
->>>>>>> main
-    </Provider>
+    </PersistGate >
   )
 }

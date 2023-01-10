@@ -1,49 +1,32 @@
 import { useState } from "react"
-import form_style from './Form.module.css'
-import React from 'react';
+import PropTypes from 'prop-types'
 import IButton from '@material-ui/core/Button';
 import ITextField from '@material-ui/core/TextField';
-import { useDispatch } from "react-redux";
-<<<<<<< HEAD
-import { addMessageReply } from '../../Store/Messages/action'
-=======
-<<<<<<< HEAD
-import { addMessageReply } from '../../Store/Messages/action'
-=======
-import { addMessage } from '../../Store/Messages/action'
->>>>>>> main
->>>>>>> main
 import { useParams } from "react-router-dom";
+
+
+import form_style from './Form.module.css'
+import React from 'react';
+import { push } from "firebase/database";
+import { getMessageListById } from '../../services/firebase'
 
 
 
 export function Form() {
 
 	const [text, setText] = useState('');
-	const dispatch = useDispatch()
 	const { chatId } = useParams()
+
+
 	const handleSubmit = (event) => {
 		event.preventDefault()
-		// Вызываем диспатч и в экшен передаем 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> main
-		// #3. Изменяем dispatch
-		// dispatch(addMessage(chatId, text))
-		// setText('')
-		// #3.1 Переходим в reducer 
-		dispatch(addMessageReply(chatId, {
+
+		push(getMessageListById(chatId), {
 			author: 'user',
 			text
-		}))
-<<<<<<< HEAD
-=======
-=======
-		dispatch(addMessage(chatId, text))
->>>>>>> main
->>>>>>> main
-		setText('')
+		})
+
+		setText('');
 	}
 
 
@@ -67,9 +50,14 @@ export function Form() {
 					variant="contained"
 					color="secondary"
 					className={form_style.button}
-				>Add message</IButton>
+				>Добавить сообщение</IButton>
 
 			</form>
 		</>
 	)
+}
+
+
+Form.propTypes = {
+	addMessage: PropTypes.func
 }

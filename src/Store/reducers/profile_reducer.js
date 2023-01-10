@@ -2,7 +2,6 @@
 import * as types from '../types/profile_type'
 
 
-// начальное состояние checkBox
 let checkBox = {
 	check: false
 }

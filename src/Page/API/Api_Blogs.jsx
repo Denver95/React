@@ -22,53 +22,17 @@ export function ApiBlogs() {
 
 	const dispatch = useDispatch();
 
-	// Хранение наших данных
-	// const [blogs, setBlogs] = useState([]);
 	const blogs = useSelector(selectBlogs);
 
-
-	// Переменная хранит состояние  загрузки данных
-	// const [loading, setLoading] = useState(false);
 	const loading = useSelector(selectBlogsLoading);
 
-
-	// Переменая хранит ошибка
-	// const [error, setError] = useState('');
 	const error = useSelector(selectBlogsError);
-
-	// // переменная с колбекфункцией которая будет делать асинхронный запрос на сервер и принимать данные.
-	// const requestFetchBlogs = async () => {
-
-	// 	// Сделаем активной загрзку
-	// 	setLoading(true);
-
-	// 	// Стерем ошибку
-	// 	setError('');
-
-	// 	try {
-	// 		// Получаем данные и делаем проверку на получение данных
-	// 		const res = await fetch(Api_Url_Blogs)
-	// 		if (!res.ok) {
-	// 			throw new Error(`Request failed with status ${res.status}`);
-	// 		}
-	// 		// Если проверку true то парсим данные  и записываем
-	// 		const data = await res.json();
-	// 		setBlogs(data);
-	// 	} catch (error) {
-	// 		setError(error.message);
-	// 	}
-	// 	finally {
-	// 		setLoading(false);
-	// 	}
-	// };
 
 	const requestFetchBlogs = () => {
 		dispatch(getAllBlogs())
 
 	};
 
-
-	// Вызовем наш запрос
 	useEffect(() => {
 
 	}, []);

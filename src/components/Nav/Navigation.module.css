@@ -15,3 +15,22 @@
 	background-color: cadetblue;
 	border-radius: 5px;
 }
+
+.block_regist_login {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-end;
+
+}
+
+.btn {
+	padding: 5px;
+	border-radius: 5px;
+	background-color: chartreuse;
+	color: rgb(0, 89, 255);
+	cursor: pointer;
+	border: none;
+	margin-right: 20px;
+}
